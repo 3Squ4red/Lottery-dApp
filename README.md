@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ether Lottery
 
-## Getting Started
+A simple Lottery dApp built on Rinkeby testnet, whose winner selection method is based on a provably fair and verifiable random number generator.
 
-First, run the development server:
+## Rules
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+#### Participation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Exactly 0.01 ETH must be sent to participate in the lottery
+  - Any different amount would revert the transaction
+  - The same participant can however click **Participate** again to place more bet than just 0.01 ETH
+- The manager cannot participate
+- You cannot participate if the manager is the zero-address. This could happen after a lottery ends
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+#### Getting the results
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Only the manager can get the results
+- Lottery must have at least 3 participants
+- The manager must not be a zero-address
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### Setting a new manager
 
-## Learn More
+- A lottery must have ended and the current manager should be a zero-address
 
-To learn more about Next.js, take a look at the following resources:
+**Please make sure to connect your [MetaMask](https://metamask.io/) wallet and switch to Rinkeby Testnet before clicking any of the three buttons to avoid seeing big red error messages. Support for other wallets have not been implemented yet.**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Demo 🚀
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Try it out [here]() and view the lottery contract [here](https://goerli.etherscan.io/address/0xba38610d6ceb970de9127ed0b4eb6f0a31fed8c7)
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The frontend is built using [Next.js](https://nextjs.org/) and [Bulma](https://bulma.io/) library for CSS styling.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+On the Web3 side, the contract is written in Solidity and compiled and deployed using Hardhat. The contract uses [Chainlink VRF](https://docs.chain.link/docs/chainlink-vrf/) to generate a random numbers for the selection of a winner. This VRF however, **\*doesn't** return a random number immediately* and takes upto 2 minutes to do so, which is why after clicking the *Get Results\* button, a 120 seconds timer starts, to show the time remaining.
+
+## Limitations
+
+The most prominent limitation of this Lottery system is that it's proper functioning is heavily dependent on how it's going to be interacted with.
+The buttons are not _turned off_ (i.e. made un-clickable) at any moment. So, if a participant decides to just go ahead and randomly start clicking the buttons **in between transactions**, the application is mostly likely going to report an error or even worse, it may crash.
+Therefore, if you'll try it using your own sincere conscience and patiently wait for the operations to complete and the **updates to appear on screen**, you could have a good time with this little creation of mine.
+
+The contract is manually tested using Remix IDE and it's local accounts but not with any testing framworks or libraries.
+
+## What I learned
+
+I came across many new findings which I may have remained unaware of without creating this decentralized application. Some of them are:
+
+- How to use an oracle like Chainlink VRF
+- Knowledge of Solidity and Ethereum alone is not enough to build a fully functional dApp
+  - Frontend designing skills probably comes first
+- How to host my own Next.js project for free using GitHub pages
+- Interacting with MetaMask wallet using Ether.js
+- Importance of using enviroment variables
+- Unit conversion using utils library of Ether.js
+
+## Contact me
+
+[Instagram](https://www.instagram.com/sweetjimmy_/) | [Telegram](https://t.me/sweet_jimmy) | [Twitter](https://twitter.com/bytcodevelocity) | [Email](mailto=velocitybytecode@gmail.com)
