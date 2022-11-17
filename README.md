@@ -26,7 +26,7 @@ A simple Lottery dApp built on Rinkeby testnet, whose winner selection method is
 
 ## Demo 🚀
 
-Try it out [here]() and view the lottery contract [here](https://goerli.etherscan.io/address/0xba38610d6ceb970de9127ed0b4eb6f0a31fed8c7)
+Try it out [here](https://lottery-dapp-bytecode-velocity.vercel.app/) and view the lottery contract [here](https://goerli.etherscan.io/address/0xba38610d6ceb970de9127ed0b4eb6f0a31fed8c7)
 
 ## Tech Stack
 
@@ -49,7 +49,7 @@ I came across many new findings which I may have remained unaware of without cre
 - How to use an oracle like Chainlink VRF
 - Knowledge of Solidity and Ethereum alone is not enough to build a fully functional dApp
   - Frontend designing skills probably comes first
-- How to host my own Next.js project for free using GitHub pages
+- How to host my own Next.js project for free on Vercel
 - Interacting with MetaMask wallet using Ether.js
 - Importance of using enviroment variables
 - Unit conversion using utils library of Ether.js
