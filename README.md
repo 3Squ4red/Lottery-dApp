@@ -1,6 +1,6 @@
 # Ether Lottery
 
-A simple Lottery dApp built on Rinkeby testnet, whose winner selection method is based on a provably fair and verifiable random number generator.
+A simple Lottery dApp built on Goerli testnet, whose winner selection method is based on a provably fair and verifiable random number generator.
 
 ## Rules
 
